@@ -6,20 +6,61 @@ const nums = [1, 10, 3, 9, 4, 8, 5, 7, 6, 2, -5, -2, -4, -9] // eslint-disable-l
 let hasTen = false
 let indexOfTen = -1
 
+for (let i = 0; i <= nums.length; i++) {
+  if (nums[i] === 10) {
+    hasTen = true
+    indexOfTen = i
+    break
+  }
+}
+
 // 2. Use a for loop to count how many numbers in the array are divisible by 3
 let divisibleByThreeCount = 0
+
+nums.forEach((num) => {
+  if (num % 3 === 0) {
+    divisibleByThreeCount++
+  }
+})
 
 // 3. use a for loop to find the average of the numbers in the array
 let average = 0
 
+nums.forEach((num) => {
+  average += num
+})
+
+average = average / nums.length
+
 // 4. use a for loop to find the largest number in the array
-let largest = 0
+let largest = nums[0]
+
+for (let i = 1; i < nums.length; i++) {
+  if (largest < nums[i]) {
+    largest = nums[i]
+  }
+}
 
 // 5. use a for loop to find the smallest number in the array
-let smallest = 100000
+let smallest = nums[0]
+
+for (let i = 0; i < nums.length; i++) {
+  if (smallest > nums[i]) {
+    smallest = nums[i]
+  }
+}
 
 // 6. find the median of the numbers in the array
 let median = 0
+nums.sort((a, b) => a - b)
+
+const middle = Math.floor(nums.length / 2)
+
+if (nums.length % 2 === 0) {
+  median = nums[middle - 1]
+} else {
+  median = nums[middle]
+}
 
 module.exports = {
   hasTen,
